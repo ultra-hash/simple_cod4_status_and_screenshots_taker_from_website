@@ -1,6 +1,14 @@
 # simple cod4 status and screenshots taker from website
 This is writen in php to take screenshots of the players , playing in the server from the website.
- and this also serves as cod4 server status viewer 
+ and this also serves as cod4 server status viewer.
+  1. takes screenshot of player from webiste
+  2. check for server online/offline
+  3. displays number of player online
+  4. displays map currently playing with image. 
+  ```
+  [Note: if you have custom maps add photo of map with extenction jpg with name mp_CustomMapName.png to images/maps folder ]
+  [example if map name = mp_bubba then image name should be mp_bubba.jpg]
+  ```
 
 installation procedure
 1. clone the files to the webroot folder or sub directory.
@@ -14,4 +22,4 @@ Now for displaying images from any directory to the web browser
 3. enjoy.
 
 
-see the project live in www.algaming.tk 
+see the project live in www.algaming.tk
