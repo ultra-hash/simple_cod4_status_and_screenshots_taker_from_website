@@ -6,6 +6,12 @@ installation procedure
 1. clone the files to the webroot folder or sub directory.
 2. edit the lines ' 14 to 17 ' in " index.php "
 3. edit the lines ' 14 , 15 , 16 ' in " rcon.ini.php.
-4. enjoy.
+
+Now for displaying images from any directory to the web browser
+
+1.change the directroy in "line 10" in "screenshots/index.php"
+2.change the directory in "line 4" in "screendhots/file_viewer.php"
+3.enjoy.
+
 
 see the project live in www.algaming.tk 
