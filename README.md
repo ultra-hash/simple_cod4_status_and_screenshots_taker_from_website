@@ -6,7 +6,7 @@ This is writen in php to take screenshots of the players , playing in the server
   3. displays number of player online
   4. displays map currently playing with image. 
   ```
-  [Note: if you have custom maps add photo of map with extenction jpg with name mp_CustomMapName.png to images/maps folder ]
+  [Note: if you have custom maps add photo of map with extenction jpg with name mp_CustomMapName.jpg to images/maps folder ]
   [example if map name = mp_bubba then image name should be mp_bubba.jpg]
   ```
 
