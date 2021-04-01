@@ -21,6 +21,8 @@ $server_name = '[AL]PROMOD[DM]';
 
 
 
+include 'rcon.ini.php';
+
 $indexno = 1;
 
 foreach($xml->Clients->attributes() as $player_data => $data){
@@ -46,9 +48,21 @@ foreach($xml->Game->Data as $Game_data){
              }
      }
 }
+ 
+   	if (!$x = @fsockopen($server_IP, $server_port)) // attempt to connect
+        {
+            $server_status = 'Offline  <i class="fa fa-circle" style="color:red; font-size: 10px;"></i>';
+        }
+        else
+        {
+            $server_status = 'Online   <i class="fa fa-circle" style="color:green; font-size: 10px;"></i>';
+            if ($x)
+            {
+                @fclose($x); //close connection
+    	    }
+        } 
 
 
-        
 ?>
 
 
@@ -97,8 +111,7 @@ foreach($xml->Game->Data as $Game_data){
     }
   </style>
 </head>
-<body>
-
+<body style="background-color: #101820FF; color: #FEE715FF;">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -113,8 +126,18 @@ foreach($xml->Game->Data as $Game_data){
       <ul class="nav navbar-nav">
         <li class="active"><a href="http://www.algaming.tk">Home</a></li>
         <li><a href="http://www.algaming.tk/screenshots/">screenshots</a></li>
-       <!--- <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>--->
+        <!--- <li><a href="http://www.algaming.tk/statistics.php">Statistics</a></li> -->
+        <li><a href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
+		<!-- Modal -->
+  	<div class="modal fade alert alert-info" id="contactModal" role="dialog">
+    	  <div class="modal-dialog modal-sm">
+      	    <div class="modal-content ">
+              <div class="modal-body">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+              <div> <center>For any queries Contact<br><h2>[AL]Happy#9833</h2><br>At Discord</div>
+            </div>
+          </div>
+        </div>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -123,23 +146,22 @@ foreach($xml->Game->Data as $Game_data){
   </div>
 </nav>
 
-
 <div class="container-fluid ">    
   <div class="row content">
     <div class="col-sm-2" style="margin-top:40px;">	
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="www.algaming.tk">Home</a></li>
+        <li class="active"><a href="http://www.algaming.tk">Home</a></li>
         <li><a href="http://www.algaming.tk/screenshots/">Screenshots</a></li>
-       <!--- <li><a href="#">banned list</a></li>
-        <li><a href="#">admins</a></li>--->
-		<li><a href="http://www.algaming.tk/b3">B3 commands</a></li>
+        <!---<li><a href="http://www.algaming.tk/adminslist.php">Adminslist</a></li>--->
+	<li><a href="http://www.algaming.tk/b3">B3 commands</a></li>
+	<!---<li><a href="https://github.com/ultra-hash">GitHub</a></li>--->
       </ul>
     </div>
     <div class="col-sm-7 text-left">
 	 <h2><?php echo $game_name;?></h2>
 	  <div class="panel panel-default">
 		<div class="panel-heading"><b>Players Online</b><span class="badge navbar-right" style="margin-right: 10px"> <?php echo $players_online.' / '. $max_players;?></span></div>
-		  <div class="panel-body">
+		  <div class="panel-body" style="background-color: #101820FF; color: #FEE715FF;">
 			<div class="table-responsive">
 			<table class="table table-bordered">
 				<thead>
@@ -179,7 +201,7 @@ foreach($xml as $xml_data){
 						echo '<td>'.$data.'</td>';
 					}
 					if($player_data == 'Ping' ){
-						echo '<td>  <form method="POST"><button type="submit" class="btn btn-primary btn-block" name="player_CID" value="'.$player_CID.'"><i class="fa fa-camera"></i> Take Screenshot</button></form></td>';
+						echo '<td>  <form method="POST"><button type="submit" class="btn btn-primary btn-block" data-somestringvalue-text="Screenshot Requested" autocomplete="off" name="player_CID" value="'.$player_CID.'">Take Screenshot</button></form></td>';
 					}
 				}
 			}
@@ -197,15 +219,16 @@ echo '</tbody></table></div>';
     <div class="col-sm-3" style="margin-top:62px;">
 		<div class="panel panel-default">
 			<div class="panel-heading"><b>Server Name : <?php echo $server_name;?> </b></div>
-				<div class="panel-body">
+				<div class="panel-body" style="background-color: #101820FF; color: #FEE715FF;">
 					<?php echo '<img src="images/maps/'.$map_name.'.jpg" class="img img-thumbnail" alt="'.$map_name.'"></img>'?>
 				</div>
 				<div class="panel-footer">
 					<ul class="list-group">
-					  <li class="list-group-item">Map : <b><?php echo $map_name_alias;?></b></li>
-					  <li class="list-group-item">server ip: <b><?php echo $server_ip; ?></b></li>
-					  <li class="list-group-item">Players online: <b><?php echo $players_online; ?></b></li>
-					  <li class="list-group-item">Location: <b><?php  echo $server_location; ?></b></li>
+					  <li class="list-group-item" style="color: black;">Server Status : <b><?php echo $server_status;?></b></li>
+					  <li class="list-group-item" style="color: black;">Map : <b><?php echo $map_name_alias;?></b></li>
+					  <li class="list-group-item" style="color: black;">server ip: <b><?php echo $server_ip; ?></b></li>
+					  <li class="list-group-item" style="color: black;">Players online: <b><?php echo $players_online; ?></b></li>
+					  <li class="list-group-item" style="color: black;">Location: <b><?php  echo $server_location; ?></b></li>
 					</ul>
 				</div>
 			</div>  
@@ -213,7 +236,20 @@ echo '</tbody></table></div>';
 	</div>
   </div>
 </div>
-	
+
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $(this).button('loading').delay(1000).queue(function(){
+      $(this).button('somestringvalue');
+      $(this).dequeue().delay(2000).queue(function(){
+      	$(this).button("reset");
+      	$(this).dequeue();
+      });
+    });
+  });
+});
+</script>
 
 <footer class="container-fluid text-center">
 <p>Copyright 2020-2021 by <a href="http://algaming.tk">Anime Lover Gaming</a>. All Rights Reserved.</p>
@@ -227,5 +263,6 @@ include 'rcon.php';
 
 ?> 
 </html>
+
 
 
