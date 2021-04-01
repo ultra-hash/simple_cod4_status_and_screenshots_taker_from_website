@@ -9,9 +9,9 @@ installation procedure
 
 Now for displaying images from any directory to the web browser
 
-1.change the directroy in "line 10" in "screenshots/index.php"
-2.change the directory in "line 4" in "screendhots/file_viewer.php"
-3.enjoy.
+1. change the directroy in "line 10" in "screenshots/index.php"
+2. change the directory in "line 4" in "screendhots/file_viewer.php"
+3. enjoy.
 
 
 see the project live in www.algaming.tk 
