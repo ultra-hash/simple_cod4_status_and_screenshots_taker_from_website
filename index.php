@@ -40,11 +40,12 @@ foreach($xml->Game->Data as $Game_data){
              }elseif(($game = 'Name') && ($data == 'mapname')){
                 $need_value = $Game_data;
                 $map_name =  $need_value->attributes()->Value;
-		$map_name_alias = explode('_', $map_name);
-                $map_name_alias = end($map_name_alias);
              }elseif(($game = 'Name') && ($data == 'gamename')){
                 $need_value = $Game_data;
                 $game_name =  $need_value->attributes()->Value;
+             }elseif(($game = 'Name') && ($data == 'g_gametype')){
+                $need_value = $Game_data;
+                $gametype_name =  $need_value->attributes()->Value;				
              }
      }
 }
@@ -125,7 +126,7 @@ foreach($xml->Game->Data as $Game_data){
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="http://www.algaming.tk">Home</a></li>
-        <li><a href="http://www.algaming.tk/screenshots/">screenshots</a></li>
+        <li><a href="http://www.algaming.tk/screenshots/">Screenshots</a></li>
         <!--- <li><a href="http://www.algaming.tk/statistics.php">Statistics</a></li> -->
         <li><a href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
 		<!-- Modal -->
@@ -218,14 +219,15 @@ echo '</tbody></table></div>';
     </div>
     <div class="col-sm-3" style="margin-top:62px;">
 		<div class="panel panel-default">
-			<div class="panel-heading"><b>Server Name : <?php echo $server_name;?> </b></div>
+			<div class="panel-heading"><b>Server Name: <?php echo $server_name;?> </b></div>
 				<div class="panel-body" style="background-color: #101820FF; color: #FEE715FF;">
 					<?php echo '<img src="images/maps/'.$map_name.'.jpg" class="img img-thumbnail" alt="'.$map_name.'"></img>'?>
 				</div>
 				<div class="panel-footer">
 					<ul class="list-group">
-					  <li class="list-group-item" style="color: black;">Server Status : <b><?php echo $server_status;?></b></li>
-					  <li class="list-group-item" style="color: black;">Map : <b><?php echo $map_name_alias;?></b></li>
+					  <li class="list-group-item" style="color: black;">Server Status: <b><?php echo $server_status;?></b></li>
+					  <li class="list-group-item" style="color: black;">Map: <b><?php echo $map_name_alias;?></b></li>
+					  <li class="list-group-item" style="color: black;">Game Type: <b><?php echo $gametype_name;?></b></li>						
 					  <li class="list-group-item" style="color: black;">server ip: <b><?php echo $server_ip; ?></b></li>
 					  <li class="list-group-item" style="color: black;">Players online: <b><?php echo $players_online; ?></b></li>
 					  <li class="list-group-item" style="color: black;">Location: <b><?php  echo $server_location; ?></b></li>
