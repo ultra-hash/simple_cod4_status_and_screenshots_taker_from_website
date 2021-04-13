@@ -226,10 +226,10 @@ echo '</tbody></table></div>';
 				<div class="panel-footer">
 					<ul class="list-group">
 					  <li class="list-group-item" style="color: black;">Server Status: <b><?php echo $server_status;?></b></li>
-					  <li class="list-group-item" style="color: black;">Map: <b><?php echo $map_name_alias;?></b></li>
+					  <li class="list-group-item" style="color: black;">Map: <b><?php echo $map_name;?></b></li>
 					  <li class="list-group-item" style="color: black;">Game Type: <b><?php echo $gametype_name;?></b></li>						
-					  <li class="list-group-item" style="color: black;">server ip: <b><?php echo $server_ip; ?></b></li>
-					  <li class="list-group-item" style="color: black;">Players online: <b><?php echo $players_online; ?></b></li>
+					  <li class="list-group-item" style="color: black;">Server IP: <b><?php echo $server_ip; ?></b></li>
+					  <li class="list-group-item" style="color: black;">Players Online: <b><?php echo $players_online; ?></b></li>
 					  <li class="list-group-item" style="color: black;">Location: <b><?php  echo $server_location; ?></b></li>
 					</ul>
 				</div>
